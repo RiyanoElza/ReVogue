@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | ReVogue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Premium Selection Aesthetic */
+    .selection-container {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 10%, rgba(184, 134, 11, 0.05) 0%, transparent 60%);
+      position: relative;
+    }
+
+    .selection-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .selection-header h2 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      text-transform: capitalize;
+    }
+
+    .selection-header p {
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      max-width: 500px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    .selection-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 4rem;
+      max-width: 1000px;
+      width: 100%;
+      padding: 0 5%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .selection-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      padding: 4rem 3rem;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .selection-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 30px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--accent) 0%, transparent 50%, transparent 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .selection-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+    }
+
+    .selection-card:hover::before {
+      opacity: 1;
+    }
+
+    .selection-icon {
+      font-size: 4.5rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      transition: transform 0.5s ease;
+      position: relative;
+    }
+
+    .selection-card:hover .selection-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .selection-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+      transition: color 0.3s ease;
+    }
+
+    .selection-card:hover .selection-title {
+      color: var(--accent);
+    }
+
+    .selection-desc {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Decorative floating elements */
+    .decor-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, transparent 100%);
+      z-index: 0;
+      animation: drift 15s infinite alternate ease-in-out;
+    }
+
+    .dc-1 {
+      width: 400px;
+      height: 400px;
+      top: -10%;
+      left: -5%;
+    }
+
+    .dc-2 {
+      width: 300px;
+      height: 300px;
+      bottom: 10%;
+      right: -5%;
+      animation-delay: -5s;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(30px, -30px) rotate(10deg);
+      }
+    }
+  </style>
+</head>
+
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+  <nav class="navbar">
+    <a href="index.html" class="brand-logo">Re<span>Vogue</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a></li>
+      <li><a href="profile.html">My Profile</a></li>
+    </ul>
+  </nav>
+
+  <div class="selection-container">
+    <!-- Decorative background elements -->
+    <div class="decor-circle dc-1"></div>
+    <div class="decor-circle dc-2"></div>
+
+    <div class="selection-header">
+      <h2>The Marketplace</h2>
+      <p>Your journey with premium second-hand elegance continues here. Choose your path below.</p>
+    </div>
+
+    <div class="selection-grid">
+      <a href="buy.html" class="selection-card">
+        <div class="selection-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <h3 class="selection-title">Buy Products</h3>
+        <p class="selection-desc">Discover and browse our exclusive collection of authentic premium items.</p>
+      </a>
+
+      <a href="sell.html" class="selection-card">
+        <div class="selection-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+          </svg>
+        </div>
+        <h3 class="selection-title">Sell a Product</h3>
+        <p class="selection-desc">List your premium goods and give them a beautiful second life on ReVogue.</p>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom" style="margin-top: 0; padding-top: 2rem;">
+      &copy; 2026 ReVogue DBMS Microproject. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

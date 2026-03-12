@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | ReVogue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+  <nav class="navbar">
+    <a href="index.html" class="brand-logo">Re<span>Vogue</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="cart.html" class="active">Cart (<span id="nav-cart-count">0</span>)</a></li>
+      <li><a href="profile.html">My Profile</a></li>
+    </ul>
+  </nav>
+
+  <div class="container" style="padding-top: 2rem; flex-grow: 1;">
+    <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Shopping Cart</h2>
+    
+    <div class="cart-wrap">
+      <div style="background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden;">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th style="width: 50%;">Product Details</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="cart-items-body">
+            <!-- Dynamically injected via JS -->
+            <tr><td colspan="4" style="text-align:center; padding: 2rem;">Loading cart...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cart-summary">
+        <h3 style="margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; font-size: 1.5rem;">Order Summary</h3>
+        <div class="summary-row">
+          <span style="color: var(--text-muted)">Subtotal</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span style="color: var(--text-muted)">Shipping</span>
+          <span>Calculated at next step</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Total</span>
+          <span id="cart-final-total" style="color: var(--primary)">$0.00</span>
+        </div>
+        
+        <script>
+          // Link subtotal to final total dynamically
+          const observer = new MutationObserver((mutations) => {
+            document.getElementById('cart-final-total').textContent = document.getElementById('cart-total').textContent;
+          });
+          document.addEventListener("DOMContentLoaded", () => {
+             observer.observe(document.getElementById('cart-total'), { childList: true });
+          });
+        </script>
+        
+        <button class="btn btn-primary" style="width: 100%; margin-top: 2rem;" onclick="checkout()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom" style="margin-top: 0; padding-top: 2rem;">
+      &copy; 2026 ReVogue DBMS Microproject. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCart();
+    });
+
+    function checkout() {
+      const db = getDB();
+      if (db.cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+      
+      const confirmAction = confirm("Are you sure you want to checkout?");
+      if (confirmAction) {
+        // Clear cart for the logged-in user to simulate checkout
+        db.cart = [];
+        saveDB(db);
+        alert("Order completed! (Simulated)");
+        renderCart();
+      }
+    }
+  </script>
+</body>
+</html>

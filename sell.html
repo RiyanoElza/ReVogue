@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell a Product | ReVogue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+  <nav class="navbar">
+    <a href="index.html" class="brand-logo">Re<span>Vogue</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a></li>
+      <li><a href="profile.html">My Profile</a></li>
+    </ul>
+  </nav>
+
+  <div class="container" style="padding-top: 2rem; flex-grow: 1;">
+    
+    <div style="margin-bottom: 2rem;">
+      <a href="products.html" style="text-decoration: none; color: var(--text-muted);">&larr; Back to Selection</a>
+    </div>
+
+    <!-- Add Your Product Section (Selling) -->
+    <div id="sell-section">
+      <div style="background: var(--surface); padding: 3rem; border-radius: var(--radius); box-shadow: var(--shadow-md); margin-bottom: 4rem; max-width: 800px; margin-inline: auto;">
+        <h2 class="section-title" style="margin-bottom: 1rem; text-align: left; font-size: 2rem;">List Your Item</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2.5rem;">Sell your premium product on ReVogue and give it a second life.</p>
+        
+        <form id="add-product-form" onsubmit="handleAddProduct(event)">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            <div class="form-group">
+              <label for="prodName">Product Name</label>
+              <input type="text" id="prodName" class="form-control" required placeholder="Ex: Vintage Leather Bag">
+            </div>
+            <div class="form-group">
+              <label for="prodPrice">Price ($)</label>
+              <input type="number" id="prodPrice" class="form-control" step="0.01" required placeholder="150.00">
+            </div>
+            <div class="form-group">
+              <label for="prodCat">Category</label>
+              <select id="prodCat" class="form-control" required>
+                <option value="Clothing">Clothing</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="prodImg">Image URL (Optional)</label>
+              <input type="url" id="prodImg" class="form-control" placeholder="https://...">
+            </div>
+          </div>
+          <div class="form-group" style="margin-top: 1.5rem;">
+            <label for="prodDesc">Description</label>
+            <textarea id="prodDesc" class="form-control" required placeholder="Describe the condition, brand, etc."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; font-size: 1.1rem; padding: 1rem;">List Product for Sale</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom" style="margin-top: 0; padding-top: 2rem;">
+      &copy; 2026 ReVogue DBMS Microproject. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

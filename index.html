@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReVogue | Second-Hand Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="brand-logo">Re<span>Vogue</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a></li>
+      <li><a href="profile.html">My Profile</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="hero-title">Vintage Finds that Everyone loves!</h1>
+      <p class="hero-subtitle">We have a huge collection of authentic second-hand premium items. Quality guaranteed, style unmatched.</p>
+      <a href="products.html" class="btn btn-primary hero-btn">Explore Products</a>
+    </div>
+    
+    <div class="hero-right">
+      <img src="assets/hero_image.png" alt="Premium Hero Item" class="hero-image-main">
+      
+      <!-- Floating aesthetic elements -->
+      <div class="floating-card c-1">
+        <div class="fc-content">
+          <small>Vintage Leather</small>
+          <strong>$120.00</strong>
+        </div>
+        <div class="fc-icon">▶</div>
+      </div>
+      <div class="floating-card c-2">
+        <div class="fc-content">
+          <small>Classic Watch</small>
+          <strong>$210.00</strong>
+        </div>
+        <div class="fc-icon">▶</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 class="section-title">Latest Arrivals</h2>
+    <div class="products-grid" id="latest-products">
+      <!-- Dynamically injected via JS -->
+    </div>
+    
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="products.html" class="btn btn-outline">View All Products</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <a href="index.html" class="brand-logo" style="font-size: 1.5rem; color:#fff;">Re<span style="color:var(--accent)">Vogue</span></a>
+        <p style="margin-top: 1rem; color: #ccc;">The elegant marketplace for premium second-hand goods. Promoting sustainability through reuse.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="sell.html">Sell an Item</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Return Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 ReVogue DBMS Microproject. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Specific logic for home page
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts(true); // render featured/latest
+    });
+  </script>
+</body>
+</html>
