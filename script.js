@@ -324,7 +324,9 @@ function handleLogin(e) {
 function handleRegister(e) {
   e.preventDefault();
   const name = document.getElementById('reg-name').value;
+  const phone = document.getElementById('reg-phone').value;
   const email = document.getElementById('reg-email').value;
+  const address = document.getElementById('reg-address').value;
 
   const db = getDB();
   if (db.users.find(u => u.email === email)) {
@@ -333,7 +335,7 @@ function handleRegister(e) {
   }
 
   const newId = (db.users.length > 0) ? Math.max(...db.users.map(u => u.id)) + 1 : 1;
-  const newUser = { id: newId, name, email, phone: 'Not Provided', address: 'Not Provided' };
+  const newUser = { id: newId, name, email, phone: phone || 'Not Provided', address: address || 'Not Provided' };
   db.users.push(newUser);
   saveDB(db);
 
